@@ -57,15 +57,16 @@ export default function TableCard({data}) {
                             }
                         }
                         // DATA
-                            let l = info.date.split('-')
+                            let temp = info.date.split('-')
                             let now = new Date()
-                            let date = new Date(l[0],l[1],l[2])
+                            let date = new Date(temp[0],temp[1],temp[2])
                             if(now>date){
                                 var dateStyle={
                                     backgroundColor:'red'
                                 }
                             }
-
+                        //
+                        
 
                         return(
                             <tr>

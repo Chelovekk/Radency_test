@@ -3,6 +3,7 @@ const router = Router()
 const fs = require('fs')
 const csv = require('csv-parser')
 const { resolve } = require('path')
+const { info } = require('console')
 
 
 router.get('/', async (req, res) =>{
@@ -32,7 +33,7 @@ router.get('/', async (req, res) =>{
                 }
             }
         }
-        
+
         results.map((result)=>{
         //Phone cheking
             let phoneNumber = result.phone
@@ -51,6 +52,13 @@ router.get('/', async (req, res) =>{
         if(result.has_children.length == 0){
             result.has_children = 'false'
         }
+
+        let temp = result.license.split(' ')
+        result.license=''
+        temp.map(someState=>{
+            result.license+=someState.slice(0,2) + ' '
+        })
+        result.license = result.license.toUpperCase()
         })
         // console.log(results)
      res.json(results)
