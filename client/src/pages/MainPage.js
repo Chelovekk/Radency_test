@@ -6,7 +6,7 @@ import useHttp from '../hooks/http.hook'
 import Loader from '../components/Loader'
 import TableCard from '../components/Table'
 
-export const AuthPage = () => {
+export const MainPage = () => {
     const {request, loading} = useHttp()
     const[data, setData] = useState([])
 
@@ -26,9 +26,20 @@ export const AuthPage = () => {
     if(loading){
         return <Loader/>
     }
-
+    try {
+        if(data[0].error){
+            return(
+                <Container className="mt-5 " fluid>
+                    <Button block disabled>Ошибка данных</Button>     
+                </Container>
+            )
+        }
+    } catch (error) {
+        
+    }
+    
     return(
-        <Container fluid>
+        <Container className="mt-5" fluid>
             <TableCard data = {data}/>              
         </Container>
 
