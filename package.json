@@ -1,0 +1,24 @@
+{
+  "name": "vadim",
+  "version": "1.0.0",
+  "description": "try",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\"  \"npm run client\""
+  },
+  "author": "vadim",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.2",
+    "csv-parser": "^3.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}

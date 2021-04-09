@@ -1,0 +1,6 @@
+{
+    "port" : 3000,
+    "mongoUri":"mongodb+srv://vadim:qwertypo@cluster0.roxjc.mongodb.net/appReact?retryWrites=true&w=majority",
+    "jwtSecret":"parol",
+    "baseUrl": "http://localhost:3000"
+}
