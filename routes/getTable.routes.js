@@ -9,7 +9,7 @@ router.get('/', async (req, res) =>{
     const results = [];
 
     try {
-        //Parse CSV
+        //Parse CSV 
         await fs.createReadStream('table.csv')
         .pipe(csv())
         .on('data', (data) => results.push(data))
@@ -32,6 +32,7 @@ router.get('/', async (req, res) =>{
                 }
             }
         }
+        
         results.map((result)=>{
         //Phone cheking
             let phoneNumber = result.phone
@@ -42,7 +43,7 @@ router.get('/', async (req, res) =>{
                     result.phone = '+1' + result.phone
                 }else(result.phoneMistake = true)
             }
-        //IF Full name, phone or email empty
+        //IF Full name, phone or email empty //костыль
             if(result.full_name.length == 0 || result.phone.length == 0 || result.email.length == 0){
                 results[0].error = true
             }
@@ -55,7 +56,7 @@ router.get('/', async (req, res) =>{
      res.json(results)
   });
     } catch (e) {
-        res.status(500).json({messege:'Шото не то'})
+        res.status(500).json({messege:'Что-то не так'})
     }
 })
 
